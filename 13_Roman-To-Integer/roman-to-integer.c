@@ -1,7 +1,39 @@
 #include<stdio.h>
 #include<string.h>
 
-int romanToInt(char * s)
+int roman_value(char val)
+{
+     switch (val)
+        {
+        case 'I':
+            return 1;
+            break;
+        case 'V':
+            return 5;
+            break;
+        case 'X':
+            return 10;
+            break;
+        case 'L':
+            return 50;
+            break;
+        case 'C':
+            return 100;
+            break;
+        case 'D':
+            return 500;
+            break;
+        case 'M':
+            return 1000;
+            break;
+        
+        default:
+            break;
+        }
+    
+}
+
+int romanToInt(char *s)
 {
 
     int num=0;
@@ -11,54 +43,22 @@ int romanToInt(char * s)
     {
         int flag = 1;
 
-        char roman[]={'I','V','X','L','C','D','M'};
-        printf("true %c",roman[5]);
-
-        if (s[i]<s[i+1])
+    
+        if (roman_value(s[i])<roman_value(s[i+1]))
         {
-            printf("true %d",i);
             flag = -1;
         }
-
-        switch (s[i])
-        {
-        case 'I':
-            num=num+1*flag;
-            break;
-        case 'V':
-            num=num+5*flag;
-            break;
-        case 'X':
-            num=num+10*flag;
-            break;
-        case 'L':
-            num=num+50*flag;
-            break;
-        case 'C':
-            num=num+100*flag;
-            break;
-        case 'D':
-            num=num+500*flag;
-            break;
-        case 'M':
-            num=num+1000*flag;
-            break;
-        
-        default:
-            break;
-        }
-        
+        num = num + roman_value(s[i]) *flag;
+                
     }
-    
     return num;
 
 }
 
 int main()
 {
-    // printf("%d\n",romanToInt("III"));
-    // printf("%d\n",romanToInt("IX"));
-    printf("%d\n",romanToInt("IV"));
-    // printf("%d\n",romanToInt("MCMXCIV"));
+    printf("%d\n",romanToInt("III"));
+    printf("%d\n",romanToInt("LVIII"));
+    printf("%d\n",romanToInt("MCMXCIV"));
     return 0;
 }
