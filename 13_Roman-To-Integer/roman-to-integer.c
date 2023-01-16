@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<string.h>
 
+
+//took a charecter which is pased from another function and return its equivalent charecter value
 int roman_value(char val)
 {
      switch (val)
@@ -33,14 +35,18 @@ int roman_value(char val)
     
 }
 
+//main function to change roman value to its equivalent number
 int romanToInt(char *s)
 {
 
+    //assume that at first equivalent roman value is 0
     int num=0;
 
+    //check the length of input string using strlen() function which is avialable in string.h header file
     int length=strlen(s);
     for (int i = 0; i < length; i++)
-    {
+    {   
+        //here flag is used to wheather we should nedd to add or subtract the number according to condition
         int flag = 1;
 
     
@@ -57,6 +63,7 @@ int romanToInt(char *s)
 
 int main()
 {
+    //pass the input string to romanToInt() function to get its roman equivalent number
     printf("%d\n",romanToInt("III"));
     printf("%d\n",romanToInt("LVIII"));
     printf("%d\n",romanToInt("MCMXCIV"));
